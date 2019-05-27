@@ -5,10 +5,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.User;
+import com.example.repository.Ex20Repository;
+import com.example.service.UserSercvice;
 
 @Controller
 @RequestMapping("/marathon")
@@ -29,9 +32,14 @@ public class Marahon {
 //		return "inputname3";
 //	}
 
+//	@RequestMapping("")
+//	public String index() {
+//		return "inputname4";
+//	}
+
 	@RequestMapping("")
 	public String index() {
-		return "inputname4";
+		return "marathon20km";
 	}
 
 	@RequestMapping("/01")
@@ -45,7 +53,7 @@ public class Marahon {
 	@RequestMapping("/02")
 	public String Exe02(User user, Model model) {
 
-		model.addAttribute("name", user);
+		model.addAttribute("user", user);
 
 		return "ex02";
 	}
@@ -74,14 +82,28 @@ public class Marahon {
 
 	@RequestMapping("/04")
 	public String Exe04(String goods1, String goods2, String goods3) {
-		
-		int answer=Integer.parseInt(goods1)+Integer.parseInt(goods2)+Integer.parseInt(goods3);
-		int tax =(int)(answer*1.08);
-		
+
+		int answer = Integer.parseInt(goods1) + Integer.parseInt(goods2) + Integer.parseInt(goods3);
+		int tax = (int) (answer * 1.08);
+
 		application.setAttribute("answer", answer);
 		application.setAttribute("tax", tax);
-		
+
 		return "ex04";
+	}
+
+	@Autowired
+	private UserSercvice service;
+	
+	@RequestMapping("/20")
+	public String ex20(String id, Model model) {
+		User user = new User();
+
+		user = service.load(Integer.parseInt(id));
+
+		model.addAttribute("user", user);
+
+		return "ex20";
 	}
 
 }

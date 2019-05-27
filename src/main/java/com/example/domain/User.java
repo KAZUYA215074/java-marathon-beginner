@@ -1,9 +1,18 @@
 package com.example.domain;
 
 public class User {
+	private Integer id;
 	private String name;
-	private String age;
+	private Integer age;
 	private String address;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -13,11 +22,11 @@ public class User {
 		this.name = name;
 	}
 
-	public String getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 

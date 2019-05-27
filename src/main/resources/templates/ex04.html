@@ -5,9 +5,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-■税抜き価格<br>
-<span th:text="${application.answer}"></span><br>
-■税込み価格<br>
-<span th:text="${application.tax}"></span><br>
+	■税抜き価格<br>
+	<span th:text="${#numbers.formatInteger(application.answer,1,'COMMA')}"></span><br>
+	 ■税込み価格<br>
+	<span th:text="${#numbers.formatInteger(application.tax,1,'COMMA')}"></span><br>
 </body>
 </html>
